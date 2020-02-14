@@ -18,6 +18,7 @@ bool EXPECT_NEAR(std::string info, float expectedVal, float actualVal,float tole
 	float val = std::abs((expectedVal - actualVal));
 	bool bret = (val<tolerance) && !std::isnan(actualVal);
 
+
 	if (bret){
 		PRINT2(info," PASSED TEST");
 //		std::cout<<info<<" PASSED TEST"<<std::endl;
