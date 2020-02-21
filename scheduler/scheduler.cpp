@@ -11,6 +11,7 @@
 //had been running on the CPU and has been preempted
 void Scheduler::add(PCB p) {
 	ready_q->push(p);
+	sort();
 }
 
 //get next process
@@ -33,22 +34,9 @@ bool Scheduler::isEmpty() {
 //true - switch processes
 //false - do not switch
 bool Scheduler::time_to_switch_processes(int tick_count, PCB &p) {
-	if (p.start_time == p.remaining_cpu_time) {
+	if (0 >= p.remaining_cpu_time) {
 		return true;
 	}
-
-	if (preemptive && p.remaining_cpu_time == p.required_cpu_time) {
-		return false;
-	}
-	if (preemptive
-			&& (p.required_cpu_time - p.remaining_cpu_time) % time_slice == 0) {
-		return true;
-	}
-
-	if (0 < p.remaining_cpu_time) {
-		return false;
-	}
-	return true;
 
 }
 
