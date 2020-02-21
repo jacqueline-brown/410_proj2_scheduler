@@ -23,7 +23,7 @@ void Stats::showAllProcessInfo() {
 		std::cout << "Process " << vec->at(i).process_number << " "
 				<< "required CPU time:" << vec->at(i).required_cpu_time
 				<< " arrived:" << vec->at(i).arrival_time << " started:"
-				<< vec->at(i).start_time << " finished:" << vec->at(i).finish_time;
+				<< vec->at(i).start_time << " finished:" << vec->at(i).finish_time << std::endl;
 	}
 
 }
@@ -33,7 +33,7 @@ void Stats::showAllProcessInfo() {
 //response_time per process = start_time - arrival_time
 //this funtion returns the average over all processes
 float Stats::get_av_response_time() {
-	int average = 0;
+	double average = 0;
 	for (int i = 0; i < vec->size(); i++) {
 		av_response_time = vec->at(i).start_time - vec->at(i).arrival_time;
 		average += av_response_time;
@@ -47,7 +47,7 @@ float Stats::get_av_response_time() {
 //turnaround time per process = finish_time - arrival_time
 //this funtion returns the average over all processes
 float Stats::get_av_turnaround_time() {
-	int average = 0;
+	double average = 0;
 	for (int i = 0; i < vec->size(); i++) {
 		av_turnaround_time = vec->at(i).finish_time - vec->at(i).arrival_time;
 		average += av_turnaround_time;
@@ -61,9 +61,9 @@ float Stats::get_av_turnaround_time() {
 //wait time per process = finish_time - arrival_time-required_CPU_time
 //this funtion returns the average over all processes
 float Stats::get_av_wait_time() {
-	int average = 0;
+	double average = 0;
 	for (int i = 0; i < vec->size(); i++) {
-		av_wait_time = vec->at(i).arrival_time - vec->at(i).required_cpu_time;
+		av_wait_time = vec->at(i).finish_time - vec->at(i).arrival_time - vec->at(i).required_cpu_time;
 		average += av_wait_time;
 	}
 	average /= vec->size();

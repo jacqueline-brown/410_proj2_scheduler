@@ -14,6 +14,7 @@
 
 //override base class behaviour if necessary, otherwise call it
 bool Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p) {
+	sort();
 	return Scheduler::time_to_switch_processes(tick_count, p);
 }
 
@@ -29,7 +30,7 @@ void Scheduler_SRTF::sort() {
 		for (int j = i + 1; i < newReady_Q.size(); j++) {
 			int pcb = newReady_Q[i].remaining_cpu_time;
 			int pcb2 = newReady_Q[j].remaining_cpu_time;
-			if (pcb > pcb2) {
+			if (pcb >  pcb2) {
 				temp = newReady_Q[i];
 				newReady_Q[i] = newReady_Q[j];
 				newReady_Q[j] = temp;
@@ -40,3 +41,5 @@ void Scheduler_SRTF::sort() {
 		ready_q->push(newReady_Q.at(i));
 	}
 }
+
+
