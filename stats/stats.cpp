@@ -4,8 +4,8 @@
  *  Created on: Sep 10, 2019
  *      Author: keith
  */
-#include "../includes/stats.h"
 #include <vector>
+#include "../includes/stats.h"
 //TODO fill in content
 
 Stats::Stats(std::vector<PCB> &finished_vector) {

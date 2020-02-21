@@ -7,9 +7,9 @@
  *      implements shortest remaining time first scheduling algorithm
  *     pre-emptive
  */
-#include "../includes/scheduler_SRTF.h"
 #include <vector>
 #include <algorithm>
+#include "../includes/scheduler_SRTF.h"
 //TODO fill in content
 
 bool compareRemaining_cpu_time(PCB pcb1, PCB pcb2);
